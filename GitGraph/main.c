@@ -29,7 +29,7 @@ int main() {
 
 	char command[1024];
 
-	snprintf(command, sizeof(command), "git -C \"%s\" branch -a", path);
+	snprintf(command, sizeof(command), "git -C \"%s\" log --all --graph --oneline --decorate", path);
 
 	FILE* fp = _popen(command, "r");
 	if (fp == NULL)

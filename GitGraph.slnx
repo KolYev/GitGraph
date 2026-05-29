@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GitGraph/GitGraph.vcxproj" Id="f541a5e6-b761-47af-8a9f-a7b5e1083795" />
+</Solution>

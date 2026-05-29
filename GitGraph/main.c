@@ -2,9 +2,36 @@
 #include <stdlib.h>
 #include <Windows.h>
 
+// функция для удаления перевода строки в конце строки
+void trim_newline(char* str) {
+	if (!str || !*str) return;
+
+	char* end = str + strlen(str) - 1;
+
+	if (*end == '\n') end[0] = '\0';
+	else {
+		char* p = str + strlen(str) - 1;
+		while (p > str && (*p == '\n' || *p == '\r')) p--;
+		*(p + 1) = '\0';
+	}
+}
+
 int main() {
 	system("chcp 65001 > nul");
-	FILE* fp = _popen("git branch", "r");
+
+	char path[512];
+	
+
+	printf("Введите путь к директории: ");
+	fgets(path, 100, stdin);
+
+	trim_newline(path);
+
+	char command[1024];
+
+	snprintf(command, sizeof(command), "git -C \"%s\" branch -a", path);
+
+	FILE* fp = _popen(command, "r");
 	if (fp == NULL)
 	{
 		perror("Ошибка");
